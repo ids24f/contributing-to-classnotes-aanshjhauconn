@@ -1,3 +1,10 @@
+**1.**
+
+
+**2.**
+
+
+**3.**
 ```{python}
 def brute_force_solver(a, b, c, d):
     solutions = []
