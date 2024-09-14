@@ -1,0 +1,55 @@
+```{python}
+def brute_force_solver(a, b, c, d):
+    solutions = []
+    
+    def add(x, y):
+        return x + y
+    
+    def subtract(x, y):
+        return x - y
+    
+    def multiply(x, y):
+        return x * y
+    
+    def divide(x, y):
+        if y == 0:
+            return None  
+        return x / y
+    
+    operations = [add, subtract, multiply, divide]
+    
+    numbers = [a, b, c, d]
+    
+    for i in range(4): # Number of suits
+        
+        for j in range(4): 
+            if j != i:
+                for k in range(4):
+                    if k != i and k != j:
+                        for l in range(4):
+                            if l != i and l != j and l != k:
+                                
+                                num1 = numbers[i]
+                                
+                                num2 = numbers[j]
+                                
+                                num3 = numbers[k]
+                                
+                                num4 = numbers[l]
+                                
+                                
+                                for op1 in operations:
+                                    for op2 in operations:
+                                        for op3 in operations:
+                                            
+                                            result = op3(op2(op1(num1, num2), num3), num4)
+                                            if result is not None:
+                                                solutions.append(result)
+                                            
+                                            
+                                            result = op2(op1(num1, num2), op3(num3, num4))
+                                            if result is not None:
+                                                solutions.append(result)
+    
+    return solutions
+```
