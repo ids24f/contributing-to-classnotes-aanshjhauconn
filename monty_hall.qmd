@@ -1,0 +1,44 @@
+```{python}
+import random
+
+def monty_hall_simulation(ndoors, ntrials):
+    switch_wins = 0  # Counter for wins when switching
+    
+    no_switch_wins = 0  # Counter for wins when not switching
+
+
+    for i in range(ntrials): # the number of trials we want the loop to run
+        # Randomly place the car behind one of the doors
+        car_behind = random.randint(0, ndoors - 1)
+        
+        # Player randomly selects a door
+        player_choice = random.randint(0, ndoors - 1) # Operation which counts the number of doors
+        
+
+        # If player doesn't switch:
+        if player_choice == car_behind:
+            no_switch_wins += 1  # The player wins, no switch
+
+
+        if player_choice != car_behind:
+            switch_wins += 1  # The player wins by switching
+    
+
+    # Calculate win rate for both strategies 
+    switch_win_rate = switch_wins / ntrials
+    no_switch_win_rate = no_switch_wins / ntrials
+
+    return switch_win_rate, no_switch_win_rate
+
+# Each of these print statements represent different simulations
+print("3 doors, 1000 trials:")
+switch_rate_3, no_switch_rate_3 = monty_hall_simulation(3, 1000)
+
+print(f"Switch win rate: {switch_rate_3:.4f}, No-switch win rate: {no_switch_rate_3:.4f}")
+
+print("5 doors, 1000 trials:")
+switch_rate_5, no_switch_rate_5 = monty_hall_simulation(5, 1000)
+
+print(f"Switch win rate: {switch_rate_5:.4f}, No-switch win rate: {no_switch_rate_5:.4f}")
+
+```
